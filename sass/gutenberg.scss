@@ -1,0 +1,13 @@
+// This file import some partials styles files, which should be applied to elements in the Gutenberg editor (admin).
+// You can add any custom files here.
+// Please keep the ".edit-post-visual-editor", this target specifically editor part, and not whole administration panel.
+
+.edit-post-visual-editor {
+	@import "../src/sass/bootstrap4/functions"; // loaded in front AND admin
+	@import "../src/sass/bootstrap4/variables"; // loaded in front AND admin
+	@import "../src/sass/bootstrap4/mixins"; // loaded in front AND admin
+	@import "../src/sass/bootstrap4/buttons"; // loaded in front AND admin
+	@import "theme/theme_variables"; // loaded in front AND admin
+	@import "theme/typos"; // loaded in front AND admin
+	@import "theme/editor"; // loaded in admin
+}

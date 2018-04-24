@@ -29,3 +29,26 @@ if ( ! function_exists( 'understrap_scripts' ) ) {
 } // endif function_exists( 'understrap_scripts' ).
 
 add_action( 'wp_enqueue_scripts', 'understrap_scripts' );
+
+/**
+ * Understrap editor enqueue assets
+ * Assets enqueued here will be loaded only in editor (Gutenberg)
+ *
+ * @package understrap
+ */
+
+if ( ! function_exists( 'understrap_editor_assets' ) ) {
+	/**
+	 * Load theme's JavaScript and CSS sources.
+	 */
+	function understrap_editor_assets() {
+		// Get the theme data.
+		$the_theme = wp_get_theme();
+		$theme_version = $the_theme->get( 'Version' );
+		
+		$css_version = $theme_version . '.' . filemtime(get_template_directory() . '/css/theme.min.css');
+		wp_enqueue_style( 'understrap-editor-styles', get_stylesheet_directory_uri() . '/css/gutenberg.css', array(), $css_version );
+	}
+} // endif function_exists( 'understrap_editor_assets' ).
+
+add_action( 'enqueue_block_editor_assets', 'understrap_editor_assets' );
